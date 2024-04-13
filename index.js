@@ -1,11 +1,14 @@
 const express = require("express");
-const app = express();
-const port = 3000;
+const { environment } = require("./config/environment");
 
-app.get("/", (req, res) => {
+const app = express();
+
+app.get("/hello-world", (req, res) => {
   res.send("Hello World!");
 });
 
+const port = environment.port;
+
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+  console.log(`Mememorize app listening on port ${port}`);
 });

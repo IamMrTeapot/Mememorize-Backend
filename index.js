@@ -4,6 +4,7 @@ const cors = require("cors");
 const connectDB = require("./config/db");
 const logger = require("morgan");
 const memeRouter = require("./routes/memes.route");
+const snsRouter = require("./routes/sns.route");
 
 connectDB();
 const app = express();
@@ -16,6 +17,7 @@ app.get("/hello-world", (req, res) => {
 });
 
 app.use("/memes", memeRouter);
+app.use("/sns", snsRouter);
 
 const port = environment.port;
 app.listen(port, () => {

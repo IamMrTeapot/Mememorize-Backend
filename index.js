@@ -5,6 +5,8 @@ const connectDB = require("./config/db");
 const logger = require("morgan");
 const memeRouter = require("./routes/memes.route");
 const snsRouter = require("./routes/sns.route");
+const uploadRouter = require("./routes/upload.route");
+const { upload } = require("./controllers/upload.controllers");
 
 connectDB();
 const app = express();
@@ -18,6 +20,7 @@ app.get("/hello-world", (req, res) => {
 
 app.use("/memes", memeRouter);
 app.use("/sns", snsRouter);
+app.use("/upload", uploadRouter);
 
 const port = environment.port;
 app.listen(port, () => {

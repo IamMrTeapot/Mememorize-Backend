@@ -44,14 +44,13 @@ exports.uploadImg = async (req, res) => {
         url: cloudfront + key,
         description,
       });
-      return res
-        .status(201)
-        .json({
-          success: true,
-          message: "Image uploaded successfully",
-          data: newMeme,
-        });
+      return res.status(201).json({
+        success: true,
+        message: "Image uploaded successfully",
+        data: newMeme,
+      });
     } catch (uploadError) {
+      console.log(uploadError);
       return res
         .status(500)
         .json({ success: false, error: "Failed to upload image" });
